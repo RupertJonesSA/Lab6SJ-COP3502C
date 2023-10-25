@@ -1,12 +1,13 @@
 """
 Author - Sami Al-Jamal
+Editor/Partner - Jack 
 """
 
 
 def encoder(password):
     new_pass = ""
     for char in password:
-        new_pass += str(int(char) + 3)
+        new_pass += str((int(char) + 3) % 10)
     return new_pass
 
 
