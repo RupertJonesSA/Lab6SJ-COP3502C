@@ -1,6 +1,6 @@
 """
 Author - Sami Al-Jamal
-Editor/Partner - Jack 
+Editor/Partner - Jack McKee
 """
 
 
@@ -11,9 +11,23 @@ def encoder(password):
     return new_pass
 
 
+def decode(encoded_password):
+    decoded_password = ""
+    for i in encoded_password:
+        if int(i) in range(3, 10):
+            decoded_password += str(int(i) - 3)
+        elif int(i) == 0:
+            decoded_password += "7"
+        elif int(i) == 1:
+            decoded_password += "8"
+        elif int(i) == 2:
+            decoded_password += "9"
+
+    return decoded_password
+
+
 def main():
     encode_pass = ""
-    decode_pass = ""
     while True:
         print("Menu\n-------------")
         print("1. Encode")
@@ -24,12 +38,12 @@ def main():
         if option == 1:
             password = input("Please enter your password to encode: ")
             encode_pass = encoder(password)
-            print(encode_pass)
             print("Your password has been encoded and stored!")
+
         elif option == 2:
-            """
-            Add decode function here
-            """
+            decoded_password = decode(encode_pass)
+            print(f"The encoded password is {encode_pass}, and the original password is {decoded_password}.\n")
+
         elif option == 3:
             break
 
